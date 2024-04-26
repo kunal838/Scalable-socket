@@ -12,6 +12,11 @@ class SocketService{
         this._io.on("connection",(socket)=>{
             this.arr.push(socket);
             console.log("new user connected");
+            socket.on("message",(msg)=>{
+                console.log(msg);
+                this._io.emit(msg);
+
+            })
         })
     }
     numberofuser(){
